@@ -1,12 +1,13 @@
-import { useState } from 'react'
 import './App.css'
+import BussinessDay from './components/BussinessDay'
+import Sales from './components/Sales'
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <div className="App">
-
+      <Sales />
+      <BussinessDay />
     </div>
   )
 }
