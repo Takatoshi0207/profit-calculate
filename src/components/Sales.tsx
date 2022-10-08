@@ -1,28 +1,19 @@
 import { Box, TextField } from '@mui/material'
 
-
-const Sales = () => {
+export default function Sales({ label, sx = {}, ...props }) {
   return (
-    <Box
-      component="form"
-      sx={{
-        '& > :not(style)': { m: 1, width: '25ch' },
-        display: 'flex',
-        width: '100%'
-      }}
-      noValidate
-      autoComplete="off"
-
-    >
-      <Box sx={{ textAlign: 'right' }}><h3>月次売上高:</h3></Box>
+    <Box sx={sx}>
+      <Box sx={{ fontWeight: 'bold' }}>{label}</Box>
       <TextField
-        id="outlined-basic"
-        label="ここに入力してください"
         variant="outlined"
         fullWidth
+        {...props}
+        sx={{
+          '& .Mui-disabled': {
+            background: '#ddf',
+          },
+        }}
       />
     </Box>
   )
 }
-
-export default Sales
