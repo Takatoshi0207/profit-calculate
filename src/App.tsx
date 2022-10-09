@@ -2,7 +2,7 @@ import './App.css'
 import BussinessDay from './components/BussinessDay'
 import Sales from './components/Sales'
 
-function App() {
+export default function App() {
 
   return (
     <div className="App">
@@ -11,5 +11,3 @@ function App() {
     </div>
   )
 }
-
-export default App

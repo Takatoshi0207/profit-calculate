@@ -1,7 +1,7 @@
 import { Box, TextField } from '@mui/material'
 
 
-const Sales = () => {
+export default function Sales() {
   return (
     <Box
       component="form"
@@ -24,5 +24,3 @@ const Sales = () => {
     </Box>
   )
 }
-
-export default Sales
