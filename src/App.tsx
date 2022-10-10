@@ -32,12 +32,12 @@ export default function App() {
             value={eigyoubi}
             onChange={(event) => setEigyoubi(event.target.value)}
           />
-          <Sales label="月間来店人数" sx={{ flex: 1 }} value={raitenninzuu} disabled />
+          <Sales label="お客様単価" sx={{ flex: 1 }} />
+          <Sales label="1日来店数" sx={{ flex: 1 }} />
         </Box>
-        <Sales label="営業日" />
-        <Sales label="営業日" />
-        <Sales label="営業日" disabled />
-        <Sales label="営業日" />
+        <Sales label="月間来店人数" sx={{ flex: 1 }} value={raitenninzuu} disabled />
+        {/* <Sales label="営業日" disabled />
+        <Sales label="営業日" /> */}
       </Box>
     </Box>
   )

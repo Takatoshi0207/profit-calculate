@@ -10,7 +10,7 @@ export default function Sales({ label, sx = {}, ...props }) {
         {...props}
         sx={{
           '& .Mui-disabled': {
-            background: '#ddf',
+            background: '#F3F3F3',
           },
         }}
       />
