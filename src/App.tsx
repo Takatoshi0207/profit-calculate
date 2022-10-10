@@ -5,11 +5,12 @@ import Sales from './components/Sales'
 
 export default function App() {
   const [eigyoubi, setEigyoubi] = useState(0)
-  const [nissuu, setNissuu] = useState(0)
+  const [visitors, setVisitors] = useState(0)
 
   const raitenninzuu = useMemo(() => {
-    return eigyoubi * 2
-  }, [eigyoubi])
+    return eigyoubi * visitors
+  })
+
 
   return (
     <Box sx={{ p: 3 }}>
@@ -30,10 +31,17 @@ export default function App() {
             label="営業日"
             sx={{ flex: 1 }}
             value={eigyoubi}
+            placeholder="営業日数を入力してください"
             onChange={(event) => setEigyoubi(event.target.value)}
           />
+          <Sales
+            label="1日来店数"
+            sx={{ flex: 1 }}
+            value={visitors}
+            placeholder="1日の来店人数"
+            onChange={(event) => setVisitors(event.target.value)}
+          />
           <Sales label="お客様単価" sx={{ flex: 1 }} />
-          <Sales label="1日来店数" sx={{ flex: 1 }} />
         </Box>
         <Sales label="月間来店人数" sx={{ flex: 1 }} value={raitenninzuu} disabled />
         {/* <Sales label="営業日" disabled />
