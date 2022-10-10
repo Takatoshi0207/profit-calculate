@@ -2,13 +2,15 @@ import { useState, useEffect, useMemo } from 'react'
 import Box from '@mui/material/Box'
 import BussinessDay from './components/BussinessDay'
 import Sales from './components/Sales'
+import { Typography } from '@mui/material'
 
 export default function App() {
-  const [eigyoubi, setEigyoubi] = useState(0)
-  const [visitors, setVisitors] = useState(0)
+  const [eigyoubi, setEigyoubi] = useState([])
+  const [visitors, setVisitors] = useState([])
+  const [tanka, setTanka] = useState(0)
 
   const raitenninzuu = useMemo(() => {
-    return eigyoubi * visitors
+    return eigyoubi * visitors;
   })
 
 
@@ -41,9 +43,12 @@ export default function App() {
             placeholder="1日の来店人数"
             onChange={(event) => setVisitors(event.target.value)}
           />
-          <Sales label="お客様単価" sx={{ flex: 1 }} />
+          <Sales label="お客様単価"
+            sx={{ flex: 1 }}
+            value={tanka}
+            onChange={(event) => setTanka(event.target.value)} />
         </Box>
-        <Sales label="月間来店人数" sx={{ flex: 1 }} value={raitenninzuu} disabled />
+        <Sales label="月間来店人数" sx={{ flex: 1, }} value={raitenninzuu + ' 名様'} disabled />
         {/* <Sales label="営業日" disabled />
         <Sales label="営業日" /> */}
       </Box>
