@@ -2,12 +2,12 @@ import { useState, useEffect, useMemo } from 'react'
 import Box from '@mui/material/Box'
 import BussinessDay from './components/BussinessDay'
 import Sales from './components/Sales'
-import { Typography } from '@mui/material'
+import SalesPerMonth from './components/SalesPerMonth'
 
 export default function App() {
   const [eigyoubi, setEigyoubi] = useState([])
   const [visitors, setVisitors] = useState([])
-  const [tanka, setTanka] = useState(0)
+  const [tanka, setTanka] = useState([])
 
   const raitenninzuu = useMemo(() => {
     return eigyoubi * visitors;
@@ -16,7 +16,6 @@ export default function App() {
   const salesPerMonth = useMemo(() => {
     return raitenninzuu * tanka;
   })
-  // console.log(salesPerMonth)
 
 
   return (
@@ -32,10 +31,7 @@ export default function App() {
           bgcolor: 'common.white',
         }}
       >
-        <Sales label="月間売上高"
-          placeholder="ここに入力してください"
-          value={salesPerMonth}
-        />
+
         <Box sx={{ display: 'flex', gap: 2 }}>
           <Sales
             label="営業日"
@@ -54,9 +50,15 @@ export default function App() {
           <Sales label="お客様単価"
             sx={{ flex: 1 }}
             value={tanka}
+            placeholder="単価を入力して下さい"
             onChange={(event) => setTanka(event.target.value)} />
         </Box>
         <Sales label="月間来店人数" sx={{ flex: 1, }} value={raitenninzuu + ' 名様'} disabled />
+        <SalesPerMonth label="月間売上高"
+          placeholder="自動計算されます"
+          value={salesPerMonth}
+          thousandSeparator={true}
+        />
       </Box>
     </Box>
   )
