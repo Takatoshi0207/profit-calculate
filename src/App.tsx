@@ -4,12 +4,15 @@ import BussinessDay from './components/BussinessDay'
 import Sales from './components/Sales'
 
 export default function App() {
+<<<<<<< HEAD
+=======
   const [eigyoubi, setEigyoubi] = useState(0)
   const [nissuu, setNissuu] = useState(0)
 
   const raitenninzuu = useMemo(() => {
     return eigyoubi * 2
   }, [eigyoubi])
+>>>>>>> fad1c5d630c5f773e3dd9e29912bb4758d5fb786
 
   return (
     <Box sx={{ p: 3 }}>
@@ -41,4 +44,8 @@ export default function App() {
       </Box>
     </Box>
   )
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> fad1c5d630c5f773e3dd9e29912bb4758d5fb786
