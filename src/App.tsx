@@ -24,7 +24,7 @@ export default function App() {
           bgcolor: 'common.white',
         }}
       >
-        <Sales label="月間ほげほげ" placeholder="ここに入力してください" />
+        <Sales label="月間売上高" placeholder="ここに入力してください" />
         <Box sx={{ display: 'flex', gap: 2 }}>
           <Sales
             label="営業日"
