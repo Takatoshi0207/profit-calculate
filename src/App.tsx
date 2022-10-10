@@ -13,6 +13,11 @@ export default function App() {
     return eigyoubi * visitors;
   })
 
+  const salesPerMonth = useMemo(() => {
+    return raitenninzuu * tanka;
+  })
+  // console.log(salesPerMonth)
+
 
   return (
     <Box sx={{ p: 3 }}>
@@ -27,7 +32,10 @@ export default function App() {
           bgcolor: 'common.white',
         }}
       >
-        <Sales label="月間売上高" placeholder="ここに入力してください" />
+        <Sales label="月間売上高"
+          placeholder="ここに入力してください"
+          value={salesPerMonth}
+        />
         <Box sx={{ display: 'flex', gap: 2 }}>
           <Sales
             label="営業日"
@@ -49,8 +57,6 @@ export default function App() {
             onChange={(event) => setTanka(event.target.value)} />
         </Box>
         <Sales label="月間来店人数" sx={{ flex: 1, }} value={raitenninzuu + ' 名様'} disabled />
-        {/* <Sales label="営業日" disabled />
-        <Sales label="営業日" /> */}
       </Box>
     </Box>
   )
