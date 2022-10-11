@@ -3,6 +3,7 @@ import Box from '@mui/material/Box'
 import BussinessDay from './components/BussinessDay'
 import Sales from './components/Sales'
 import SalesPerMonth from './components/SalesPerMonth'
+import logo from './assets/logo.png'
 
 export default function App() {
   const [eigyoubi, setEigyoubi] = useState([])
@@ -31,6 +32,12 @@ export default function App() {
           bgcolor: 'common.white',
         }}
       >
+        <Box sx={{
+          textAlign: 'center',
+          p: 5,
+        }}>
+          <img src={logo} alt="エアバリ" />
+        </Box>
 
         <Box sx={{ display: 'flex', gap: 2 }}>
           <Sales
