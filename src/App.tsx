@@ -6,6 +6,7 @@ import SalesPerMonth from './components/SalesPerMonth'
 import logo from './assets/logo.png'
 
 export default function App() {
+<<<<<<< HEAD
   const [eigyoubi, setEigyoubi] = useState([])
   const [visitors, setVisitors] = useState([])
   const [tanka, setTanka] = useState([])
@@ -18,6 +19,17 @@ export default function App() {
     return raitenninzuu * tanka;
   })
 
+=======
+<<<<<<< HEAD
+=======
+  const [eigyoubi, setEigyoubi] = useState(0)
+  const [nissuu, setNissuu] = useState(0)
+
+  const raitenninzuu = useMemo(() => {
+    return eigyoubi * 2
+  }, [eigyoubi])
+>>>>>>> fad1c5d630c5f773e3dd9e29912bb4758d5fb786
+>>>>>>> 33b1aff2080209fde56dd45ea30feb045c321b1d
 
   return (
     <Box sx={{ p: 3 }}>
@@ -32,6 +44,7 @@ export default function App() {
           bgcolor: 'common.white',
         }}
       >
+<<<<<<< HEAD
         <Box sx={{
           textAlign: 'center',
           p: 5,
@@ -39,6 +52,9 @@ export default function App() {
           <img src={logo} alt="エアバリ" />
         </Box>
 
+=======
+        <Sales label="月間売上高" placeholder="ここに入力してください" />
+>>>>>>> 33b1aff2080209fde56dd45ea30feb045c321b1d
         <Box sx={{ display: 'flex', gap: 2 }}>
           <Sales
             label="営業日"
@@ -69,4 +85,8 @@ export default function App() {
       </Box>
     </Box>
   )
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> fad1c5d630c5f773e3dd9e29912bb4758d5fb786
