@@ -2,8 +2,24 @@ import { useState, useEffect, useMemo } from 'react'
 import Box from '@mui/material/Box'
 import BussinessDay from './components/BussinessDay'
 import Sales from './components/Sales'
+import SalesPerMonth from './components/SalesPerMonth'
+import logo from './assets/logo.png'
 
 export default function App() {
+<<<<<<< HEAD
+  const [eigyoubi, setEigyoubi] = useState([])
+  const [visitors, setVisitors] = useState([])
+  const [tanka, setTanka] = useState([])
+
+  const raitenninzuu = useMemo(() => {
+    return eigyoubi * visitors;
+  })
+
+  const salesPerMonth = useMemo(() => {
+    return raitenninzuu * tanka;
+  })
+
+=======
 <<<<<<< HEAD
 =======
   const [eigyoubi, setEigyoubi] = useState(0)
@@ -13,6 +29,7 @@ export default function App() {
     return eigyoubi * 2
   }, [eigyoubi])
 >>>>>>> fad1c5d630c5f773e3dd9e29912bb4758d5fb786
+>>>>>>> 33b1aff2080209fde56dd45ea30feb045c321b1d
 
   return (
     <Box sx={{ p: 3 }}>
@@ -27,20 +44,44 @@ export default function App() {
           bgcolor: 'common.white',
         }}
       >
+<<<<<<< HEAD
+        <Box sx={{
+          textAlign: 'center',
+          p: 5,
+        }}>
+          <img src={logo} alt="エアバリ" />
+        </Box>
+
+=======
         <Sales label="月間売上高" placeholder="ここに入力してください" />
+>>>>>>> 33b1aff2080209fde56dd45ea30feb045c321b1d
         <Box sx={{ display: 'flex', gap: 2 }}>
           <Sales
             label="営業日"
             sx={{ flex: 1 }}
             value={eigyoubi}
+            placeholder="営業日数を入力してください"
             onChange={(event) => setEigyoubi(event.target.value)}
           />
-          <Sales label="月間来店人数" sx={{ flex: 1 }} value={raitenninzuu} disabled />
+          <Sales
+            label="1日来店数"
+            sx={{ flex: 1 }}
+            value={visitors}
+            placeholder="1日の来店人数"
+            onChange={(event) => setVisitors(event.target.value)}
+          />
+          <Sales label="お客様単価"
+            sx={{ flex: 1 }}
+            value={tanka}
+            placeholder="単価を入力して下さい"
+            onChange={(event) => setTanka(event.target.value)} />
         </Box>
-        <Sales label="営業日" />
-        <Sales label="営業日" />
-        <Sales label="営業日" disabled />
-        <Sales label="営業日" />
+        <Sales label="月間来店人数" sx={{ flex: 1, }} value={raitenninzuu + ' 名様'} disabled />
+        <SalesPerMonth label="月間売上高"
+          placeholder="自動計算されます"
+          value={salesPerMonth}
+          thousandSeparator={true}
+        />
       </Box>
     </Box>
   )

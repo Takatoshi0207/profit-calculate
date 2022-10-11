@@ -1,11 +1,7 @@
 import { Box, TextField } from '@mui/material'
+import { NumberFormatBase } from 'react-number-format'
 
-<<<<<<< HEAD
-
-export default function Sales() {
-=======
-export default function Sales({ label, sx = {}, ...props }) {
->>>>>>> fad1c5d630c5f773e3dd9e29912bb4758d5fb786
+export default function SalesPerMonth({ label, sx = {}, ...props }) {
   return (
     <Box sx={sx}>
       <Box sx={{ fontWeight: 'bold' }}>{label}</Box>
@@ -18,6 +14,7 @@ export default function Sales({ label, sx = {}, ...props }) {
             background: '#F3F3F3',
           },
         }}
+        thousandSeparator={true}
       />
     </Box>
   )
