@@ -25,15 +25,16 @@ export default function App() {
         sx={{
           display: 'flex',
           flexDirection: 'column',
-          gap: 2,
+          gap: 3,
           p: 3,
           border: '1px solid #ddd',
+          borderBottom: '2px solid #ddd ',
           bgcolor: 'common.white',
         }}
       >
         <Box sx={{
-          width: 200,
-          p: 5,
+          width: 180,
+          p: 1,
           mx: "auto",
         }}>
           <a href="/">
@@ -68,6 +69,37 @@ export default function App() {
           value={salesPerMonth}
           thousandSeparator={true}
         />
+      </Box >
+
+      {/* 想定画面 */}
+      <Box
+        component="form"
+        sx={{
+          display: 'flex',
+          flexDirection: 'column',
+          gap: 2,
+          p: 3,
+          border: '1px solid #ddd',
+          bgcolor: 'common.white',
+        }}
+      >
+        <Box sx={{ display: 'flex', gap: 2 }}>
+          <Sales
+            label="お声掛け 想定"
+            sx={{ flex: 1 }}
+            value={eigyoubi}
+            placeholder="◯ %"
+            onChange={(event) => setEigyoubi(event.target.value)}
+          />
+          <Sales label="平均単価" placeholder="円" />
+          <Sales
+            label="エアバリ導入後 想定売上"
+            sx={{ flex: 1 }}
+            value={visitors}
+            placeholder="想定売上"
+            onChange={(event) => setVisitors(event.target.value)}
+          />
+        </Box>
       </Box >
     </Box >
   )
