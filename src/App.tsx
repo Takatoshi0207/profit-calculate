@@ -1,17 +1,18 @@
 import { useState, useEffect, useMemo } from 'react'
 import Box from '@mui/material/Box'
-import BussinessDay from './components/BussinessDay'
 import Sales from './components/Sales'
 import SalesPerMonth from './components/SalesPerMonth'
 import logo from './assets/logo.svg'
+import { Typography } from '@mui/material'
 
 export default function App() {
   const [eigyoubi, setEigyoubi] = useState([])
   const [visitors, setVisitors] = useState([])
   const [tanka, setTanka] = useState([])
+  const [okoegake, setOkoegake] = useState([])
 
   const raitenninzuu = useMemo(() => {
-    return eigyoubi * visitors;
+    return eigyoubi * visitors
   })
 
   const salesPerMonth = useMemo(() => {
@@ -63,12 +64,29 @@ export default function App() {
             placeholder="単価を入力して下さい"
             onChange={(event) => setTanka(event.target.value)} />
         </Box>
+
         <Sales label="月間来店人数" sx={{ flex: 1, }} value={raitenninzuu + ' 名様'} disabled />
-        <SalesPerMonth label="月間売上高"
-          placeholder="自動計算されます"
-          value={salesPerMonth}
-          thousandSeparator={true}
-        />
+
+        <Box sx={{ display: 'flex', bgcolor: 'background.paper', borderRadius: 1 }} >
+          <SalesPerMonth label="月間売上高"
+            placeholder="自動計算されます"
+            value={salesPerMonth}
+            thousandSeparator={true}
+            sx={{
+              width: '100%'
+            }}
+          />
+          <Typography
+            sx={{
+              display: 'flex',
+              alignItems: 'flex-end',
+              flex: 1,
+              ml: -3,
+            }}
+          >
+            円
+          </Typography>
+        </Box>
       </Box >
 
       {/* 想定画面 */}
@@ -87,11 +105,32 @@ export default function App() {
           <Sales
             label="お声掛け 想定"
             sx={{ flex: 1 }}
-            value={eigyoubi}
-            placeholder="◯ %"
-            onChange={(event) => setEigyoubi(event.target.value)}
+            onChange={(event) => setOkoegake(event.target.value)}
+            value={okoegake}
+          // placeholder="◯ %"
           />
-          <Sales label="平均単価" placeholder="円" />
+          <Typography
+            variant='h6'
+            sx={{
+              display: 'flex',
+              alignItems: 'flex-end',
+              ml: -5,
+            }}
+          >
+            %
+          </Typography>
+          <Sales
+            label="平均単価"
+          />
+          <Typography
+            sx={{
+              display: 'flex',
+              alignItems: 'flex-end',
+              ml: -5,
+            }}
+          >
+            円
+          </Typography>
           <Sales
             label="エアバリ導入後 想定売上"
             sx={{ flex: 1 }}

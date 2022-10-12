@@ -1,5 +1,4 @@
 import { Box, TextField } from '@mui/material'
-import { NumberFormatBase } from 'react-number-format'
 
 export default function SalesPerMonth({ label, sx = {}, ...props }) {
   return (
@@ -11,10 +10,9 @@ export default function SalesPerMonth({ label, sx = {}, ...props }) {
         {...props}
         sx={{
           '& .Mui-disabled': {
-            background: '#F3F3F3',
+            background: '#000000',
           },
         }}
-        thousandSeparator={true}
       />
     </Box>
   )

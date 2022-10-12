@@ -12,6 +12,7 @@ export default function ThemeProvider({ children }) {
       },
       secondary: { main: '#556677' },
       background: { default: mode === 'light' ? '#f3f3f3' : '#212121' },
+
     },
     components: {
       MuiCssBaseline: {
@@ -28,10 +29,10 @@ export default function ThemeProvider({ children }) {
           variantMapping: {
             h1: 'h2',
             h2: 'h2',
-            h3: 'h2',
-            h4: 'h2',
-            h5: 'h2',
-            h6: 'h2',
+            h3: 'h3',
+            h4: 'h4',
+            h5: 'h5',
+            h6: 'h6',
             subtitle1: 'h2',
             subtitle2: 'h2',
             body1: 'span',
