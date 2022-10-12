@@ -35,10 +35,11 @@ export default function App() {
           textAlign: 'center',
           p: 5,
         }}>
-          <img src={logo} alt="エアバリ" />
+          <a href="/">
+            <img src={logo} alt="エアバリ" />
+          </a>
         </Box>
 
-        <Sales label="月間売上高" placeholder="ここに入力してください" />
         <Box sx={{ display: 'flex', gap: 2 }}>
           <Sales
             label="営業日"
