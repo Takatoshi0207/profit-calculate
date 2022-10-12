@@ -3,7 +3,7 @@ import Box from '@mui/material/Box'
 import BussinessDay from './components/BussinessDay'
 import Sales from './components/Sales'
 import SalesPerMonth from './components/SalesPerMonth'
-import logo from './assets/logo.png'
+import logo from './assets/logo.svg'
 
 export default function App() {
   const [eigyoubi, setEigyoubi] = useState([])
@@ -32,8 +32,9 @@ export default function App() {
         }}
       >
         <Box sx={{
-          textAlign: 'center',
+          width: 200,
           p: 5,
+          mx: "auto",
         }}>
           <a href="/">
             <img src={logo} alt="エアバリ" />
