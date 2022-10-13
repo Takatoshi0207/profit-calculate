@@ -6,10 +6,11 @@ import logo from './assets/logo.svg'
 import { Typography } from '@mui/material'
 
 export default function App() {
-  const [eigyoubi, setEigyoubi] = useState([])
-  const [visitors, setVisitors] = useState([])
-  const [tanka, setTanka] = useState([])
-  const [okoegake, setOkoegake] = useState([])
+  const [eigyoubi, setEigyoubi] = useState<number>([]);
+  const [visitors, setVisitors] = useState<number>([]);
+  const [tanka, setTanka] = useState<number>([]);
+  const [okoegake, setOkoegake] = useState<number>([]);
+  const [upSellTanka, setUpSellTanka] = useState<number>([]);
 
   const raitenninzuu = useMemo(() => {
     return eigyoubi * visitors
@@ -18,6 +19,21 @@ export default function App() {
   const salesPerMonth = useMemo(() => {
     return raitenninzuu * tanka;
   })
+
+  const heikinTanka = useMemo(() => {
+    const upSellCustomer = raitenninzuu * (okoegake / 100);
+    const avCustomer = raitenninzuu - upSellCustomer;
+    const airbariTanka = 7700;
+    const upSellTanka = tanka + airbariTanka;
+    const upSelluriage = upSellTanka * upSellCustomer;
+    const avTanka = tanka * avCustomer;
+    // const upSellTanka = upSelluriage + avTanka;
+    const newTanka = upSellTanka / 100;
+    return (
+      upSellTanka
+    )
+  })
+  console.log(heikinTanka)
 
   return (
     <Box sx={{ p: 3 }}>
@@ -103,11 +119,25 @@ export default function App() {
       >
         <Box sx={{ display: 'flex', gap: 2 }}>
           <Sales
-            label="お声掛け 想定"
+            label="エアバリメニュー単価"
+            value='7,700円'
             sx={{ flex: 1 }}
+            disabled
+          />
+          <Typography
+            sx={{
+              display: 'flex',
+              alignItems: 'flex-end',
+              ml: -5,
+            }}
+          >
+            円
+          </Typography>
+          <Sales
+            label="お声掛け 想定"
             onChange={(event) => setOkoegake(event.target.value)}
             value={okoegake}
-          // placeholder="◯ %"
+            placeholder="０"
           />
           <Typography
             variant='h6'
@@ -115,12 +145,16 @@ export default function App() {
               display: 'flex',
               alignItems: 'flex-end',
               ml: -5,
+              mr: 1
             }}
           >
             %
           </Typography>
+        </Box>
+        <Box sx={{ display: 'flex', gap: 2 }}>
           <Sales
             label="平均単価"
+            value={heikinTanka}
           />
           <Typography
             sx={{
@@ -134,10 +168,20 @@ export default function App() {
           <Sales
             label="エアバリ導入後 想定売上"
             sx={{ flex: 1 }}
-            value={visitors}
+            value={upSellTanka}
             placeholder="想定売上"
-            onChange={(event) => setVisitors(event.target.value)}
+            onChange={(event) => setUpSellTanka(event.target.value)}
           />
+          <Typography
+            sx={{
+              display: 'flex',
+              alignItems: 'flex-end',
+              ml: -5,
+              mr: 1
+            }}
+          >
+            円
+          </Typography>
         </Box>
       </Box >
     </Box >
