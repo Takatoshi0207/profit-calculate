@@ -1,24 +1,24 @@
-import { useState, useEffect, useMemo } from 'react'
-import Box from '@mui/material/Box'
-import Sales from './components/Sales'
-import SalesPerMonth from './components/SalesPerMonth'
-import logo from './assets/logo.svg'
-import { Typography } from '@mui/material'
+import { useState, useEffect, useMemo } from "react";
+import Box from "@mui/material/Box";
+import Sales from "./components/Sales";
+import SalesPerMonth from "./components/SalesPerMonth";
+import logo from "./assets/logo.svg";
+import { Typography } from "@mui/material";
 
 export default function App() {
-  const [eigyoubi, setEigyoubi] = useState<number>([]);
-  const [visitors, setVisitors] = useState<number>([]);
-  const [tanka, setTanka] = useState<number>([]);
-  const [okoegake, setOkoegake] = useState<number>([]);
-  const [upSellTanka, setUpSellTanka] = useState<number>([]);
+  const [eigyoubi, setEigyoubi] = useState<number>();
+  const [visitors, setVisitors] = useState<number>();
+  const [tanka, setTanka] = useState<number>();
+  const [okoegake, setOkoegake] = useState<number>();
+  const [upSellTanka, setUpSellTanka] = useState<number>();
 
   const raitenninzuu = useMemo(() => {
-    return eigyoubi * visitors
-  })
+    return eigyoubi * visitors;
+  });
 
   const salesPerMonth = useMemo(() => {
     return raitenninzuu * tanka;
-  })
+  });
 
   const heikinTanka = useMemo(() => {
     const upSellCustomer = raitenninzuu * (okoegake / 100);
@@ -29,37 +29,37 @@ export default function App() {
     const avTanka = tanka * avCustomer;
     // const upSellTanka = upSelluriage + avTanka;
     const newTanka = upSellTanka / 100;
-    return (
-      upSellTanka
-    )
-  })
-  console.log(heikinTanka)
+    return upSellTanka;
+  });
+  console.log(heikinTanka);
 
   return (
     <Box sx={{ p: 3 }}>
       <Box
         component="form"
         sx={{
-          display: 'flex',
-          flexDirection: 'column',
+          display: "flex",
+          flexDirection: "column",
           gap: 3,
           p: 3,
-          border: '1px solid #ddd',
-          borderBottom: '2px solid #ddd ',
-          bgcolor: 'common.white',
+          border: "1px solid #ddd",
+          borderBottom: "2px solid #ddd ",
+          bgcolor: "common.white",
         }}
       >
-        <Box sx={{
-          width: 180,
-          p: 1,
-          mx: "auto",
-        }}>
+        <Box
+          sx={{
+            width: 180,
+            p: 1,
+            mx: "auto",
+          }}
+        >
           <a href="/">
             <img src={logo} alt="エアバリ" />
           </a>
         </Box>
 
-        <Box sx={{ display: 'flex', gap: 2 }}>
+        <Box sx={{ display: "flex", gap: 2 }}>
           <Sales
             label="営業日"
             sx={{ flex: 1 }}
@@ -74,28 +74,38 @@ export default function App() {
             placeholder="1日の来店人数"
             onChange={(event) => setVisitors(event.target.value)}
           />
-          <Sales label="お客様単価"
+          <Sales
+            label="お客様単価"
             sx={{ flex: 1 }}
             value={tanka}
             placeholder="単価を入力して下さい"
-            onChange={(event) => setTanka(event.target.value)} />
+            onChange={(event) => setTanka(Number(event.target.value))}
+          />
         </Box>
 
-        <Sales label="月間来店人数" sx={{ flex: 1, }} value={raitenninzuu + ' 名様'} disabled />
+        <Sales
+          label="月間来店人数"
+          sx={{ flex: 1 }}
+          value={raitenninzuu + " 名様"}
+          disabled
+        />
 
-        <Box sx={{ display: 'flex', bgcolor: 'background.paper', borderRadius: 1 }} >
-          <SalesPerMonth label="月間売上高"
+        <Box
+          sx={{ display: "flex", bgcolor: "background.paper", borderRadius: 1 }}
+        >
+          <SalesPerMonth
+            label="月間売上高"
             placeholder="自動計算されます"
             value={salesPerMonth}
             thousandSeparator={true}
             sx={{
-              width: '100%'
+              width: "100%",
             }}
           />
           <Typography
             sx={{
-              display: 'flex',
-              alignItems: 'flex-end',
+              display: "flex",
+              alignItems: "flex-end",
               flex: 1,
               ml: -3,
             }}
@@ -103,31 +113,31 @@ export default function App() {
             円
           </Typography>
         </Box>
-      </Box >
+      </Box>
 
       {/* 想定画面 */}
       <Box
         component="form"
         sx={{
-          display: 'flex',
-          flexDirection: 'column',
+          display: "flex",
+          flexDirection: "column",
           gap: 2,
           p: 3,
-          border: '1px solid #ddd',
-          bgcolor: 'common.white',
+          border: "1px solid #ddd",
+          bgcolor: "common.white",
         }}
       >
-        <Box sx={{ display: 'flex', gap: 2 }}>
+        <Box sx={{ display: "flex", gap: 2 }}>
           <Sales
             label="エアバリメニュー単価"
-            value='7,700円'
+            value="7,700円"
             sx={{ flex: 1 }}
             disabled
           />
           <Typography
             sx={{
-              display: 'flex',
-              alignItems: 'flex-end',
+              display: "flex",
+              alignItems: "flex-end",
               ml: -5,
             }}
           >
@@ -140,26 +150,23 @@ export default function App() {
             placeholder="０"
           />
           <Typography
-            variant='h6'
+            variant="h6"
             sx={{
-              display: 'flex',
-              alignItems: 'flex-end',
+              display: "flex",
+              alignItems: "flex-end",
               ml: -5,
-              mr: 1
+              mr: 1,
             }}
           >
             %
           </Typography>
         </Box>
-        <Box sx={{ display: 'flex', gap: 2 }}>
-          <Sales
-            label="平均単価"
-            value={heikinTanka}
-          />
+        <Box sx={{ display: "flex", gap: 2 }}>
+          <Sales label="平均単価" value={heikinTanka} />
           <Typography
             sx={{
-              display: 'flex',
-              alignItems: 'flex-end',
+              display: "flex",
+              alignItems: "flex-end",
               ml: -5,
             }}
           >
@@ -174,16 +181,16 @@ export default function App() {
           />
           <Typography
             sx={{
-              display: 'flex',
-              alignItems: 'flex-end',
+              display: "flex",
+              alignItems: "flex-end",
               ml: -5,
-              mr: 1
+              mr: 1,
             }}
           >
             円
           </Typography>
         </Box>
-      </Box >
-    </Box >
-  )
+      </Box>
+    </Box>
+  );
 }
