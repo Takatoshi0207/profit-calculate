@@ -3,7 +3,7 @@ import Box from "@mui/material/Box";
 import { LabelTextInput } from "./components/LabelTextInput";
 import SalesPerMonth from "./components/SalesPerMonth";
 import logo from "./assets/logo.svg";
-import { Typography } from "@mui/material";
+import { styled, TextField, Typography } from "@mui/material";
 
 export default function App() {
   const [eigyoubi, setEigyoubi] = useState<number>();
@@ -57,7 +57,6 @@ export default function App() {
             <img src={logo} alt="エアバリ" />
           </a>
         </Box>
-
         <Box sx={{ display: "flex", gap: 2, flexWrap: "wrap" }}>
           <LabelTextInput
             label="営業日"
@@ -84,7 +83,7 @@ export default function App() {
 
         <LabelTextInput
           label="月間来店人数"
-          value={raitenninzuu + " 名様"}
+          value={raitenninzuu}
           disabled
           unit={"人"}
         />

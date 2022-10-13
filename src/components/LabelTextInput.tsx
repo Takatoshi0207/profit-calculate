@@ -1,5 +1,4 @@
 import { Box, FormControl, InputAdornment, OutlinedInput } from "@mui/material";
-
 interface LabelTextInputProps {
   label: string;
   placeholder?: string;
@@ -31,6 +30,7 @@ const LabelTextInput: React.FC<LabelTextInputProps> = ({
       <FormControl
         sx={{
           "& .Mui-disabled": {
+            color: "#ff0000",
             background: "#F3F3F3",
           },
         }}
@@ -44,7 +44,9 @@ const LabelTextInput: React.FC<LabelTextInputProps> = ({
           fullWidth
           endAdornment={<InputAdornment position="end">{unit}</InputAdornment>}
           inputProps={{
-            "aria-label": "weight",
+            style: {
+              fontSize: 12,
+            },
           }}
         />
       </FormControl>
