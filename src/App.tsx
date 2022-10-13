@@ -1,6 +1,6 @@
-import { useState, useEffect, useMemo } from "react";
+import { useState, useMemo } from "react";
 import Box from "@mui/material/Box";
-import Sales from "./components/Sales";
+import { LabelTextInput } from "./components/LabelTextInput";
 import SalesPerMonth from "./components/SalesPerMonth";
 import logo from "./assets/logo.svg";
 import { Typography } from "@mui/material";
@@ -31,7 +31,6 @@ export default function App() {
     const newTanka = upSellTanka / 100;
     return upSellTanka;
   });
-  console.log(heikinTanka);
 
   return (
     <Box sx={{ p: 3 }}>
@@ -59,35 +58,35 @@ export default function App() {
           </a>
         </Box>
 
-        <Box sx={{ display: "flex", gap: 2 }}>
-          <Sales
+        <Box sx={{ display: "flex", gap: 2, flexWrap: "wrap" }}>
+          <LabelTextInput
             label="営業日"
-            sx={{ flex: 1 }}
             value={eigyoubi}
             placeholder="営業日数を入力してください"
-            onChange={(event) => setEigyoubi(event.target.value)}
+            onChange={(event: any) => setEigyoubi(event.target.value)}
+            unit={"日"}
           />
-          <Sales
+          <LabelTextInput
             label="1日来店数"
-            sx={{ flex: 1 }}
             value={visitors}
             placeholder="1日の来店人数"
             onChange={(event) => setVisitors(event.target.value)}
+            unit={"人"}
           />
-          <Sales
+          <LabelTextInput
             label="お客様単価"
-            sx={{ flex: 1 }}
             value={tanka}
             placeholder="単価を入力して下さい"
             onChange={(event) => setTanka(Number(event.target.value))}
+            unit={"円"}
           />
         </Box>
 
-        <Sales
+        <LabelTextInput
           label="月間来店人数"
-          sx={{ flex: 1 }}
           value={raitenninzuu + " 名様"}
           disabled
+          unit={"人"}
         />
 
         <Box
@@ -127,68 +126,40 @@ export default function App() {
           bgcolor: "common.white",
         }}
       >
-        <Box sx={{ display: "flex", gap: 2 }}>
-          <Sales
+        <Box sx={{ display: "flex", gap: 2, flexWrap: "wrap" }}>
+          <LabelTextInput
             label="エアバリメニュー単価"
-            value="7,700円"
-            sx={{ flex: 1 }}
+            value="7,700"
             disabled
+            unit={"円"}
+            size={"large"}
           />
-          <Typography
-            sx={{
-              display: "flex",
-              alignItems: "flex-end",
-              ml: -5,
-            }}
-          >
-            円
-          </Typography>
-          <Sales
+
+          <LabelTextInput
             label="お声掛け 想定"
-            onChange={(event) => setOkoegake(event.target.value)}
+            onChange={(e: any) => setOkoegake(e.target.value)}
             value={okoegake}
             placeholder="０"
+            unit={"％"}
+            size={"large"}
           />
-          <Typography
-            variant="h6"
-            sx={{
-              display: "flex",
-              alignItems: "flex-end",
-              ml: -5,
-              mr: 1,
-            }}
-          >
-            %
-          </Typography>
         </Box>
-        <Box sx={{ display: "flex", gap: 2 }}>
-          <Sales label="平均単価" value={heikinTanka} />
-          <Typography
-            sx={{
-              display: "flex",
-              alignItems: "flex-end",
-              ml: -5,
-            }}
-          >
-            円
-          </Typography>
-          <Sales
+        <Box sx={{ display: "flex", gap: 2, flexWrap: "wrap" }}>
+          <LabelTextInput
+            label="平均単価"
+            placeholder="平均単価"
+            value={heikinTanka}
+            unit={"円"}
+            size={"large"}
+          />
+          <LabelTextInput
             label="エアバリ導入後 想定売上"
-            sx={{ flex: 1 }}
             value={upSellTanka}
             placeholder="想定売上"
             onChange={(event) => setUpSellTanka(event.target.value)}
+            unit={"円"}
+            size={"large"}
           />
-          <Typography
-            sx={{
-              display: "flex",
-              alignItems: "flex-end",
-              ml: -5,
-              mr: 1,
-            }}
-          >
-            円
-          </Typography>
         </Box>
       </Box>
     </Box>
