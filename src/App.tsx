@@ -27,9 +27,9 @@ export default function App() {
     const upSellTanka = tanka + airbariTanka;
     const upSelluriage = upSellTanka * upSellCustomer;
     const avTanka = tanka * avCustomer;
-    // const upSellTanka = upSelluriage + avTanka;
-    const newTanka = upSellTanka / 100;
-    return upSellTanka;
+    const airbariUriage = upSelluriage + avTanka;
+    const newTanka = airbariUriage / raitenninzuu;
+    return newTanka;
   });
 
   return (
@@ -147,7 +147,7 @@ export default function App() {
           <LabelTextInput
             label="平均単価"
             placeholder="平均単価"
-            value={heikinTanka}
+            value={tanka && okoegake ? heikinTanka : undefined}
             unit={"円"}
             size={"large"}
           />
@@ -155,7 +155,6 @@ export default function App() {
             label="エアバリ導入後 想定売上"
             value={upSellTanka}
             placeholder="想定売上"
-            onChange={(event) => setUpSellTanka(event.target.value)}
             unit={"円"}
             size={"large"}
           />
