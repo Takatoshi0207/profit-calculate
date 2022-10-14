@@ -10,7 +10,6 @@ export default function App() {
   const [visitors, setVisitors] = useState<number>();
   const [tanka, setTanka] = useState<number>();
   const [okoegake, setOkoegake] = useState<number>();
-  const [upSellTanka, setUpSellTanka] = useState<number>();
 
   const raitenninzuu = useMemo(() => {
     return eigyoubi * visitors;
@@ -20,14 +19,15 @@ export default function App() {
     return raitenninzuu * tanka;
   });
 
+  const upSellCustomer = raitenninzuu * (okoegake / 100);
+  const avCustomer = raitenninzuu - upSellCustomer;
+  const airbariTanka = 7700;
+  const upSellTanka = tanka + airbariTanka;
+  const upSelluriage = upSellTanka * upSellCustomer;
+  const avTanka = tanka * avCustomer;
+  const airbariUriage = upSelluriage + avTanka;
+
   const heikinTanka = useMemo(() => {
-    const upSellCustomer = raitenninzuu * (okoegake / 100);
-    const avCustomer = raitenninzuu - upSellCustomer;
-    const airbariTanka = 7700;
-    const upSellTanka = tanka + airbariTanka;
-    const upSelluriage = upSellTanka * upSellCustomer;
-    const avTanka = tanka * avCustomer;
-    const airbariUriage = upSelluriage + avTanka;
     const newTanka = airbariUriage / raitenninzuu;
     return newTanka;
   });
@@ -83,7 +83,7 @@ export default function App() {
 
         <LabelTextInput
           label="月間来店人数"
-          value={raitenninzuu}
+          value={visitors ? raitenninzuu : undefined}
           disabled
           unit={"人"}
         />
@@ -94,7 +94,7 @@ export default function App() {
           <SalesPerMonth
             label="月間売上高"
             placeholder="自動計算されます"
-            value={salesPerMonth}
+            value={tanka ? salesPerMonth : undefined}
             thousandSeparator={true}
             sx={{
               width: "100%",
@@ -153,7 +153,7 @@ export default function App() {
           />
           <LabelTextInput
             label="エアバリ導入後 想定売上"
-            value={upSellTanka}
+            value={okoegake ? airbariUriage : undefined}
             placeholder="想定売上"
             unit={"円"}
             size={"large"}
