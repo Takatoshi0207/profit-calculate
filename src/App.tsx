@@ -1,9 +1,8 @@
 import { useState, useMemo } from "react";
 import Box from "@mui/material/Box";
 import { LabelTextInput } from "./components/LabelTextInput";
-import SalesPerMonth from "./components/SalesPerMonth";
 import logo from "./assets/logo.svg";
-import { styled, TextField, Typography } from "@mui/material";
+import { SalesPerMonth } from "./components/SalesPerMonth";
 
 export default function App() {
   const [eigyoubi, setEigyoubi] = useState<number>();
@@ -95,21 +94,9 @@ export default function App() {
             label="月間売上高"
             placeholder="自動計算されます"
             value={tanka ? salesPerMonth : undefined}
-            thousandSeparator={true}
-            sx={{
-              width: "100%",
-            }}
+            unit={'円'}
+            size={'medium'}
           />
-          <Typography
-            sx={{
-              display: "flex",
-              alignItems: "flex-end",
-              flex: 1,
-              ml: -3,
-            }}
-          >
-            円
-          </Typography>
         </Box>
       </Box>
 
