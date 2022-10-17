@@ -1,10 +1,11 @@
-import {
-  createTheme,
-  ThemeProvider as MuiThemeProvider,
-} from "@mui/material/styles";
+import { createTheme, ThemeProvider as MuiThemeProvider, } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 
-export default function ThemeProvider({ children }) {
+interface ChildrenProps {
+  children: React.ReactNode;
+}
+
+const ThemeProvider: React.FC<ChildrenProps> = ({ children }) => {
   const mode = "light";
   const theme = createTheme({
     palette: {
@@ -64,3 +65,5 @@ export default function ThemeProvider({ children }) {
     </MuiThemeProvider>
   );
 }
+
+export { ThemeProvider }
