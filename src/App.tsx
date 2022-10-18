@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Box from "@mui/material/Box";
 import { LabelTextInput } from "./components/LabelTextInput";
 import logo from "./assets/logo.svg";
@@ -76,7 +76,7 @@ export default function App() {
 
         <LabelTextInput
           label="月間来店人数"
-          value={visitors ? raitenninzuu : undefined}
+          value={visitors ? raitenninzuu.toLocaleString() : undefined}
           disabled
           unit={"人"}
         />
@@ -87,7 +87,7 @@ export default function App() {
           <SalesPerMonth
             label="月間売上高"
             placeholder="自動計算されます"
-            value={tanka ? salesPerMonth : undefined}
+            value={tanka ? salesPerMonth.toLocaleString() : undefined}
             unit={'円'}
             size={'medium'}
           />
@@ -128,13 +128,13 @@ export default function App() {
           <LabelTextInput
             label="平均単価"
             placeholder="平均単価"
-            value={tanka && okoegake ? heikinTanka : undefined}
+            value={tanka && okoegake ? heikinTanka.toLocaleString() : undefined}
             unit={"円"}
           // size={"large"}
           />
           <LabelTextInput
             label="エアバリ導入後 想定売上"
-            value={okoegake ? airbariUriage : undefined}
+            value={okoegake ? airbariUriage.toLocaleString() : undefined}
             placeholder="想定売上"
             unit={"円"}
           // size={"large"}

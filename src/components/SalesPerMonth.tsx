@@ -39,7 +39,7 @@ const SalesPerMonth: React.FC<SalesPerMonthProps> = ({
           endAdornment={<InputAdornment position="end">{unit}</InputAdornment>}
           inputProps={{
             style: {
-              fontSize: 12,
+              fontSize: 15,
             },
           }}
         />
