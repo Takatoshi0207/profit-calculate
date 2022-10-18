@@ -10,26 +10,20 @@ export default function App() {
   const [tanka, setTanka] = useState<number>();
   const [okoegake, setOkoegake] = useState<number>();
 
-  const raitenninzuu = useMemo(() => {
-    return eigyoubi * visitors;
-  });
+  const raitenninzuu = Number(eigyoubi) * Number(visitors);
 
-  const salesPerMonth = useMemo(() => {
-    return raitenninzuu * tanka;
-  });
+  const salesPerMonth = raitenninzuu * Number(tanka);
 
-  const upSellCustomer = raitenninzuu * (okoegake / 100);
+
+  const upSellCustomer = raitenninzuu * (Number(okoegake) / 100);
   const avCustomer = raitenninzuu - upSellCustomer;
   const airbariTanka = 7700;
-  const upSellTanka = tanka + airbariTanka;
+  const upSellTanka = Number(tanka) + airbariTanka;
   const upSelluriage = upSellTanka * upSellCustomer;
-  const avTanka = tanka * avCustomer;
+  const avTanka = Number(tanka) * avCustomer;
   const airbariUriage = upSelluriage + avTanka;
 
-  const heikinTanka = useMemo(() => {
-    const newTanka = airbariUriage / raitenninzuu;
-    return newTanka;
-  });
+  const heikinTanka = airbariUriage / raitenninzuu;
 
   return (
     <Box sx={{ p: 3 }}>
