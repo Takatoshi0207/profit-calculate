@@ -3,7 +3,7 @@ import { Box, FormControl, InputAdornment, OutlinedInput } from '@mui/material'
 interface SalesPerMonthProps {
   label: string;
   placeholder: string;
-  value: number | undefined;
+  value: string | number | undefined;
   unit: string;
   size: "medium" | "large";
 }
