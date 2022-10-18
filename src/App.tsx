@@ -1,4 +1,4 @@
-import { useState, useMemo } from "react";
+import { useState } from "react";
 import Box from "@mui/material/Box";
 import { LabelTextInput } from "./components/LabelTextInput";
 import logo from "./assets/logo.svg";
@@ -112,7 +112,7 @@ export default function App() {
             value="7,700"
             disabled
             unit={"円"}
-            size={"large"}
+          // size={"large"}
           />
 
           <LabelTextInput
@@ -121,7 +121,7 @@ export default function App() {
             value={okoegake}
             placeholder="０"
             unit={"％"}
-            size={"large"}
+          // size={"large"}
           />
         </Box>
         <Box sx={{ display: "flex", gap: 2, flexWrap: "wrap" }}>
@@ -130,17 +130,17 @@ export default function App() {
             placeholder="平均単価"
             value={tanka && okoegake ? heikinTanka : undefined}
             unit={"円"}
-            size={"large"}
+          // size={"large"}
           />
           <LabelTextInput
             label="エアバリ導入後 想定売上"
             value={okoegake ? airbariUriage : undefined}
             placeholder="想定売上"
             unit={"円"}
-            size={"large"}
+          // size={"large"}
           />
         </Box>
       </Box>
-    </Box>
+    </Box >
   );
 }

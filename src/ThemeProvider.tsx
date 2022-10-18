@@ -45,7 +45,7 @@ const ThemeProvider: React.FC<ChildrenProps> = ({ children }) => {
       },
     },
     typography: {
-      fontSize: 16.0,
+      fontSize: 11.0,
       h1: {
         fontSize: "2.4rem",
       },
