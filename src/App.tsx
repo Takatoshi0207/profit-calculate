@@ -76,22 +76,23 @@ export default function App() {
           />
         </Box>
 
-        <LabelTextInput
-          label="月間来店人数"
-          value={visitors ? raitenninzuu.toLocaleString() : undefined}
-          disabled
-          unit={"人"}
-        />
-
         <Box
-          sx={{ display: "flex", bgcolor: "background.paper", borderRadius: 1 }}
+          sx={{
+            display: "flex",
+            borderRadius: 1,
+            gap: 2,
+            flexWrap: "wrap",
+          }}
         >
           <LabelText
+            label="月間来店人数"
+            value={visitors ? raitenninzuu.toLocaleString() : undefined}
+            unit={"人"}
+          />
+          <LabelText
             label="月間売上高"
-            placeholder="自動計算されます"
             value={tanka ? salesPerMonth.toLocaleString() : undefined}
             unit={"円"}
-            size={"medium"}
           />
         </Box>
       </Box>
@@ -113,7 +114,6 @@ export default function App() {
             label="エアバリメニュー単価"
             value={airbariTanka}
             unit={"円"}
-            size={"large"}
           />
 
           <LabelTextInput
@@ -128,17 +128,13 @@ export default function App() {
         <Box sx={{ display: "flex", gap: 2, flexWrap: "wrap" }}>
           <LabelText
             label="平均単価"
-            placeholder="平均単価"
             value={tanka && okoegake ? heikinTanka.toLocaleString() : undefined}
             unit={"円"}
-            size={"large"}
           />
           <LabelText
             label="エアバリ導入後 想定売上"
             value={okoegake ? airbariUriage.toLocaleString() : undefined}
-            placeholder="想定売上"
             unit={"円"}
-            size={"large"}
           />
         </Box>
         <Box>
