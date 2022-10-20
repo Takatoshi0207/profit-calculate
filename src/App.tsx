@@ -6,10 +6,10 @@ import { LabelText } from "./components/SalesPerMonth";
 import { Typography } from "@mui/material";
 
 export default function App() {
-  const [eigyoubi, setEigyoubi] = useState<number>();
-  const [visitors, setVisitors] = useState<number>();
-  const [tanka, setTanka] = useState<number>();
-  const [okoegake, setOkoegake] = useState<number>();
+  const [eigyoubi, setEigyoubi] = useState<string>();
+  const [visitors, setVisitors] = useState<string>();
+  const [tanka, setTanka] = useState<string>();
+  const [okoegake, setOkoegake] = useState<string>();
 
   const raitenninzuu = Number(eigyoubi) * Number(visitors);
 
@@ -57,21 +57,21 @@ export default function App() {
             label="営業日"
             value={eigyoubi}
             placeholder="営業日数を入力してください"
-            onChange={(event: any) => setEigyoubi(event.target.value)}
+            onChangeValue={(str: string) => setEigyoubi(str)}
             unit={"日"}
           />
           <LabelTextInput
             label="1日来店数"
             value={visitors}
             placeholder="1日の来店人数"
-            onChange={(event) => setVisitors(event.target.value)}
+            onChangeValue={(str: string) => setVisitors(str)}
             unit={"人"}
           />
           <LabelTextInput
             label="お客様単価"
             value={tanka}
             placeholder="単価を入力して下さい"
-            onChange={(event) => setTanka(Number(event.target.value))}
+            onChangeValue={(str: string) => setTanka(str)}
             unit={"円"}
           />
         </Box>
@@ -118,7 +118,7 @@ export default function App() {
 
           <LabelTextInput
             label="お声掛け 想定"
-            onChange={(e: any) => setOkoegake(e.target.value)}
+            onChangeValue={(str: string) => setOkoegake(str)}
             value={okoegake}
             placeholder="０"
             unit={"％"}
@@ -150,7 +150,7 @@ export default function App() {
               fontSize={{ xs: 15, sm: 20 }}
               color="primary"
             >
-              {airbariUriage ? profitAirbari.toLocaleString() : undefined}円
+              {airbariUriage ? profitAirbari.toLocaleString() : "●●●"}円
             </Typography>
             の売り上げ増加が期待できます。
           </Typography>
