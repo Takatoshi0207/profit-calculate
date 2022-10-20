@@ -6,7 +6,7 @@ const isNumber = (str: string): boolean => {
   if (str.trim() === "") {
     return false;
   }
-
+  console.log(Number.isNaN(str));
   return !Number.isNaN(Number(str));
 };
 

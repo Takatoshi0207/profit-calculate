@@ -4,6 +4,7 @@ import { LabelTextInput } from "./components/LabelTextInput";
 import logo from "./assets/logo.svg";
 import { LabelText } from "./components/SalesPerMonth";
 import { Typography } from "@mui/material";
+import { isNumber } from "./lib/number";
 
 export default function App() {
   const [eigyoubi, setEigyoubi] = useState<string>();

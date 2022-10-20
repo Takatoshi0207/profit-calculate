@@ -62,7 +62,7 @@ const LabelTextInput: React.FC<LabelTextInputProps> = ({
               <InputAdornment position="start">{unit}</InputAdornment>
             ),
             style: {
-              fontSize: 15,
+              fontSize: 16,
             },
           }}
         />
