@@ -3,6 +3,7 @@ import Box from "@mui/material/Box";
 import { LabelTextInput } from "./components/LabelTextInput";
 import logo from "./assets/logo.svg";
 import { SalesPerMonth } from "./components/SalesPerMonth";
+import { Typography } from "@mui/material";
 
 export default function App() {
   const [eigyoubi, setEigyoubi] = useState<number>();
@@ -24,6 +25,8 @@ export default function App() {
   const airbariUriage = upSelluriage + avTanka;
 
   const heikinTanka = airbariUriage / raitenninzuu;
+
+  const profitAirbari = airbariUriage - salesPerMonth;
 
   return (
     <Box sx={{ p: 3 }}>
@@ -109,7 +112,7 @@ export default function App() {
         <Box sx={{ display: "flex", gap: 2, flexWrap: "wrap" }}>
           <LabelTextInput
             label="エアバリメニュー単価"
-            value="7,700"
+            value={airbariTanka}
             disabled
             unit={"円"}
           // size={"large"}
@@ -125,20 +128,37 @@ export default function App() {
           />
         </Box>
         <Box sx={{ display: "flex", gap: 2, flexWrap: "wrap" }}>
-          <LabelTextInput
+          <SalesPerMonth
             label="平均単価"
             placeholder="平均単価"
             value={tanka && okoegake ? heikinTanka.toLocaleString() : undefined}
             unit={"円"}
-          // size={"large"}
+            size={"large"}
           />
-          <LabelTextInput
+          <SalesPerMonth
             label="エアバリ導入後 想定売上"
             value={okoegake ? airbariUriage.toLocaleString() : undefined}
             placeholder="想定売上"
             unit={"円"}
-          // size={"large"}
+            size={"large"}
           />
+        </Box>
+        <Box >
+          <Typography
+            variant="h5"
+            sx={{ fontWeight: "bold" }}
+            fontSize={{ xs: 14, sm: 18 }}
+          >
+            エアバリの導入で
+            <Typography
+              gutterBottom
+              sx={{ fontWeight: "bold" }}
+              fontSize={{ xs: 15, sm: 20 }}
+              color="primary"
+            >
+              {airbariUriage ? profitAirbari.toLocaleString() : undefined}円
+            </Typography>の売り上げ増加が期待できます。
+          </Typography>
         </Box>
       </Box>
     </Box >

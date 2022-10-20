@@ -1,8 +1,9 @@
-import { Box, FormControl, InputAdornment, OutlinedInput } from "@mui/material";
+import { Box, FormControl, InputAdornment, TextField } from "@mui/material";
 interface LabelTextInputProps {
   label: string;
   placeholder?: string;
-  value: string | number | undefined;
+  value?: string | number | undefined;
+  value_no?: number;
   onChange?(e: any): void;
   disabled?: boolean;
   unit?: string;
@@ -39,21 +40,22 @@ const LabelTextInput: React.FC<LabelTextInputProps> = ({
         }}
         variant="outlined"
       >
-        <OutlinedInput
+        <TextField
           disabled={disabled}
           value={value}
+          type="number"
           onChange={onChange}
           placeholder={placeholder}
           fullWidth
-          endAdornment={<InputAdornment position="end">{unit}</InputAdornment>}
-          inputProps={{
+          InputProps={{
+            endAdornment: <InputAdornment position="start">{unit}</InputAdornment>,
             style: {
               fontSize: 15,
             },
           }}
         />
       </FormControl>
-    </Box>
+    </Box >
   );
 };
 export { LabelTextInput };

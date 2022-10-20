@@ -23,7 +23,7 @@ const SalesPerMonth: React.FC<SalesPerMonthProps> = ({
       minWidth={size === "medium" ? 150 : 300}
       flexDirection={"column"}
     >
-      <Box sx={{ fontWeight: "bold" }}>{label}</Box>
+      <Box sx={{ fontWeight: "bold" }} fontSize={{ xs: 12, sm: 15 }}>{label}</Box>
       <FormControl
         sx={{
           '& .Mui-disabled': {
