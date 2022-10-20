@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import Box from "@mui/material/Box";
 import { LabelTextInput } from "./components/LabelTextInput";
 import logo from "./assets/logo.svg";
-import { SalesPerMonth } from "./components/SalesPerMonth";
+import { LabelText } from "./components/SalesPerMonth";
 import { Typography } from "@mui/material";
 
 export default function App() {
@@ -14,7 +14,6 @@ export default function App() {
   const raitenninzuu = Number(eigyoubi) * Number(visitors);
 
   const salesPerMonth = raitenninzuu * Number(tanka);
-
 
   const upSellCustomer = raitenninzuu * (Number(okoegake) / 100);
   const avCustomer = raitenninzuu - upSellCustomer;
@@ -87,12 +86,12 @@ export default function App() {
         <Box
           sx={{ display: "flex", bgcolor: "background.paper", borderRadius: 1 }}
         >
-          <SalesPerMonth
+          <LabelText
             label="月間売上高"
             placeholder="自動計算されます"
             value={tanka ? salesPerMonth.toLocaleString() : undefined}
-            unit={'円'}
-            size={'medium'}
+            unit={"円"}
+            size={"medium"}
           />
         </Box>
       </Box>
@@ -110,12 +109,11 @@ export default function App() {
         }}
       >
         <Box sx={{ display: "flex", gap: 2, flexWrap: "wrap" }}>
-          <LabelTextInput
+          <LabelText
             label="エアバリメニュー単価"
             value={airbariTanka}
-            disabled
             unit={"円"}
-          // size={"large"}
+            size={"large"}
           />
 
           <LabelTextInput
@@ -124,18 +122,18 @@ export default function App() {
             value={okoegake}
             placeholder="０"
             unit={"％"}
-          // size={"large"}
+            // size={"large"}
           />
         </Box>
         <Box sx={{ display: "flex", gap: 2, flexWrap: "wrap" }}>
-          <SalesPerMonth
+          <LabelText
             label="平均単価"
             placeholder="平均単価"
             value={tanka && okoegake ? heikinTanka.toLocaleString() : undefined}
             unit={"円"}
             size={"large"}
           />
-          <SalesPerMonth
+          <LabelText
             label="エアバリ導入後 想定売上"
             value={okoegake ? airbariUriage.toLocaleString() : undefined}
             placeholder="想定売上"
@@ -143,7 +141,7 @@ export default function App() {
             size={"large"}
           />
         </Box>
-        <Box >
+        <Box>
           <Typography
             variant="h5"
             sx={{ fontWeight: "bold" }}
@@ -157,10 +155,11 @@ export default function App() {
               color="primary"
             >
               {airbariUriage ? profitAirbari.toLocaleString() : undefined}円
-            </Typography>の売り上げ増加が期待できます。
+            </Typography>
+            の売り上げ増加が期待できます。
           </Typography>
         </Box>
       </Box>
-    </Box >
+    </Box>
   );
 }

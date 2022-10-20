@@ -1,15 +1,14 @@
-import { Box, FormControl, InputAdornment, OutlinedInput } from '@mui/material'
+import { Box, FormControl, InputAdornment, OutlinedInput } from "@mui/material";
 
-interface SalesPerMonthProps {
+interface LabelTextProps {
   label: string;
-  placeholder: string;
+  placeholder?: string;
   value: string | number | undefined;
   unit: string;
   size: "medium" | "large";
 }
 
-
-const SalesPerMonth: React.FC<SalesPerMonthProps> = ({
+const LabelText: React.FC<LabelTextProps> = ({
   label,
   value,
   placeholder,
@@ -23,11 +22,13 @@ const SalesPerMonth: React.FC<SalesPerMonthProps> = ({
       minWidth={size === "medium" ? 150 : 300}
       flexDirection={"column"}
     >
-      <Box sx={{ fontWeight: "bold" }} fontSize={{ xs: 12, sm: 15 }}>{label}</Box>
+      <Box sx={{ fontWeight: "bold" }} fontSize={{ xs: 12, sm: 15 }}>
+        {label}
+      </Box>
       <FormControl
         sx={{
-          '& .Mui-disabled': {
-            background: '#000000',
+          "& .Mui-disabled": {
+            background: "#000000",
           },
         }}
         variant="outlined"
@@ -47,4 +48,4 @@ const SalesPerMonth: React.FC<SalesPerMonthProps> = ({
     </Box>
   );
 };
-export { SalesPerMonth };
+export { LabelText };
