@@ -3,7 +3,7 @@ import Box from "@mui/material/Box";
 import { LabelTextInput } from "./components/LabelTextInput";
 import logo from "./assets/logo.svg";
 import { LabelText } from "./components/SalesPerMonth";
-import { Typography } from "@mui/material";
+import { TextField, Typography } from "@mui/material";
 import { isNumber } from "./lib/number";
 
 export default function App() {
@@ -57,6 +57,8 @@ export default function App() {
           <LabelTextInput
             label="営業日"
             value={eigyoubi}
+            max={30}
+            min={1}
             placeholder="営業日数を入力してください"
             onChangeValue={(str: string) => setEigyoubi(str)}
             unit={"日"}

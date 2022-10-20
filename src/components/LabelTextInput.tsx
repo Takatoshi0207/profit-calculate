@@ -9,6 +9,8 @@ interface LabelTextInputProps {
   disabled?: boolean;
   unit?: string;
   size?: "medium" | "large";
+  max?: number;
+  min?: number;
 }
 
 const LabelTextInput: React.FC<LabelTextInputProps> = ({
@@ -19,6 +21,8 @@ const LabelTextInput: React.FC<LabelTextInputProps> = ({
   disabled,
   unit,
   size = "medium",
+  max,
+  min,
 }) => {
   return (
     <Box
@@ -46,11 +50,28 @@ const LabelTextInput: React.FC<LabelTextInputProps> = ({
           type="number"
           onChange={(e) => {
             const _val = e.target.value;
+            if (_val === "" && onChangeValue) {
+              onChangeValue(_val);
+              return;
+            }
             if (isNumber(_val) && _val.length >= 2) {
               if (_val.slice(0, 1) === "0" && _val.slice(1, 2) !== ".") {
                 return;
               }
             }
+            if (max) {
+              if (Number(_val) >= max && onChangeValue) {
+                onChangeValue(`${max}`);
+                return;
+              }
+            }
+            if (min) {
+              if (Number(_val) <= min && onChangeValue) {
+                onChangeValue(`${min}`);
+                return;
+              }
+            }
+
             if (onChangeValue) {
               onChangeValue(_val);
             }
