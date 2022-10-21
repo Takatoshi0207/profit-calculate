@@ -66,6 +66,8 @@ export default function App() {
           <LabelTextInput
             label="1日来店数"
             value={visitors}
+            max={1000}
+            min={1}
             placeholder="1日の来店人数"
             onChangeValue={(str: string) => setVisitors(str)}
             unit={"人"}
@@ -73,6 +75,8 @@ export default function App() {
           <LabelTextInput
             label="お客様単価"
             value={tanka}
+            max={100000}
+            min={1}
             placeholder="単価を入力して下さい"
             onChangeValue={(str: string) => setTanka(str)}
             unit={"円"}
@@ -125,7 +129,7 @@ export default function App() {
             value={okoegake}
             placeholder="０"
             unit={"％"}
-            // size={"large"}
+          // size={"large"}
           />
         </Box>
         <Box sx={{ display: "flex", gap: 2, flexWrap: "wrap" }}>
@@ -140,17 +144,17 @@ export default function App() {
             unit={"円"}
           />
         </Box>
-        <Box>
+        <Box sx={{ textAlign: "right" }}>
           <Typography
             variant="h5"
             sx={{ fontWeight: "bold" }}
-            fontSize={{ xs: 14, sm: 18 }}
+            fontSize={{ xs: 16, sm: 24 }}
           >
             エアバリの導入で
             <Typography
               gutterBottom
               sx={{ fontWeight: "bold" }}
-              fontSize={{ xs: 15, sm: 20 }}
+              fontSize={{ xs: 16, sm: 20 }}
               color="primary"
             >
               {airbariUriage ? profitAirbari.toLocaleString() : "●●●"}円
